@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build && electron-builder",
+    "start": "electron dist-electron/main.js",
+    "build": "vue-tsc && vite build",
+    "build&package": "npm run build && electron-builder",
     "preview": "vite preview",
     "release": "standard-version",
     "release:major": "standard-version --release-as major",
