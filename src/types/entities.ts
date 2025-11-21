@@ -8,4 +8,8 @@ export interface NutritionItemEntity {
     completionDate: Date | null; // 完成日期
     creationDate: Date; // 创建日期
     note: string | null; // 备注
+
+    // protein?: number; //蛋白质
+    // fat?: number;  //脂肪
+    // carbohydrates?: number; //碳水化合物
 }

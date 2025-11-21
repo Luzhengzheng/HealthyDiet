@@ -11,11 +11,18 @@ const createInvokeHandler = <T extends keyof IpcChannels>(channel: T): InvokeHan
 };
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    addNutritionItem: () => ipcRenderer.invoke('nutrition-item:add'),
-    deleteNutritionItem: () => ipcRenderer.invoke('nutrition-item:delete'),
-    updateNutritionItem: () => ipcRenderer.invoke('nutrition-item:update'),
-    getAllNutritionItems: () => ipcRenderer.invoke('nutrition-item:getAll'),
-    getNutritionItemById: () => ipcRenderer.invoke('nutrition-item:getById'),
-    getNutritionItemsByDate: () => ipcRenderer.invoke('nutrition-item:getByDate'),
-    markNutritionItemCompleted: () => ipcRenderer.invoke('nutrition-item:markCompleted'),
+    nutrition_item: {
+        add: createInvokeHandler('nutrition_item:add'),
+        delete: createInvokeHandler('nutrition_item:delete'),
+        update: createInvokeHandler('nutrition_item:update'),
+        getAll: createInvokeHandler('nutrition_item:getAll'),
+        getById: createInvokeHandler('nutrition_item:getById'),
+        getByDate: createInvokeHandler('nutrition_item:getByDate'),
+        markCompleted: createInvokeHandler('nutrition_item:markCompleted'),
+    },
+    nutrition_stat: {
+        getColoriesGoal: createInvokeHandler('nutrition_stat:getColoriesGoal'),
+        setColoriesGoal: createInvokeHandler('nutrition_stat:setColoriesGoal'),
+        getTotalEnergyByDate: createInvokeHandler('nutrition_stat:getTotalEnergyByDate'),
+    },
 });
