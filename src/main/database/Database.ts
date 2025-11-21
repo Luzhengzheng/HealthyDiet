@@ -1,16 +1,8 @@
 // 数据库类 - 待实现
 import path from 'path';
+import { Database } from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
 
+import * as schemas from './schemas';
 
-
-async function initDB() {
-  // 初始化数据库连接的逻辑
-}
-
-async function connect2DB() {
-  // 连接到数据库的逻辑
-}
-
-async function closeDB() {
-  // 关闭数据库连接的逻辑
-}
+export function initDB() {}
