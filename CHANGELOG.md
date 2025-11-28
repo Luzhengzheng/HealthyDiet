@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.1.1...v0.4.0) (2025-11-28)
+
+
+### Features
+
+* init infras ([6e13733](https://github.com/Luzhengzheng/HealthyDiet/commit/6e1373358322136109ce845ead30b4459c278763))
+* Initialize database structure and related features, improve project configuration and code formatting ([bcf2a31](https://github.com/Luzhengzheng/HealthyDiet/commit/bcf2a3149ed71df0dd0d38c5d2ba8954545ddc07))
+
 ### [0.3.1](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.3.0...v0.3.1) (2025-11-21)
 
 ## [0.3.0](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.2.0...v0.3.0) (2025-11-21)
