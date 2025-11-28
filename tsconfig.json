@@ -16,8 +16,8 @@
 
         /* Linting */
         "strict": true,
-        "noUnusedLocals": false,
-        "noUnusedParameters": true,
+        "noUnusedLocals": false, // 暂时
+        "noUnusedParameters": false, // 暂时
         "noFallthroughCasesInSwitch": true
     },
     "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "electron"],

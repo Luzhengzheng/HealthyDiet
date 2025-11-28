@@ -7,7 +7,7 @@ export interface NutritionItemEntity {
     isCompleted: boolean; // 是否已完成
     completionDate: Date | null; // 完成日期
     creationDate: Date; // 创建日期
-    note: string | null; // 备注
+    notes: string | null; // 备注
 
     // protein?: number; //蛋白质
     // fat?: number;  //脂肪

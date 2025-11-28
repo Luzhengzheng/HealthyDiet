@@ -1,9 +1,8 @@
 import { ipcMain } from 'electron';
-
 import { IpcChannels } from '../../types/ipc';
 
 export function registerIpcHandlers() {
-    // 注册 IPC 处理器
+    // 初始化应用时同步地注册 IPC 处理器
     ipcMain.handle('nutrition_item:add', async () => {});
 
     ipcMain.handle('nutrition_item:delete', async () => {});

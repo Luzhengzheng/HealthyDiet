@@ -7,7 +7,7 @@ export interface NutritionItemDTO {
     isCompleted: boolean; // 是否已完成
     completionDate?: Date; // 完成日期
     creationDate: Date; // 创建日期
-    note?: string; // 备注
+    notes?: string; // 备注
 
     // protein?: number; //蛋白质
     // fat?: number;  //脂肪
