@@ -18,3 +18,5 @@ export type createNutritionItemRequest = Omit<
     NutritionItemDTO,
     'id' | 'completionDate' | 'creationDate' | 'isCompleted'
 >;
+
+export type updateNutritionItemRequest = Partial<createNutritionItemRequest>;

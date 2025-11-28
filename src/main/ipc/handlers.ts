@@ -21,5 +21,7 @@ export function registerIpcHandlers() {
 
     ipcMain.handle('nutrition_stat:setColoriesGoal', async () => {});
 
+    ipcMain.handle('nutrition_stat:getTotalEnergy', async () => {});
+
     ipcMain.handle('nutrition_stat:getTotalEnergyByDate', async () => {});
 }

@@ -23,6 +23,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     nutrition_stat: {
         getColoriesGoal: createInvokeHandler('nutrition_stat:getColoriesGoal'),
         setColoriesGoal: createInvokeHandler('nutrition_stat:setColoriesGoal'),
+        getTotalEnergy: createInvokeHandler('nutrition_stat:getTotalEnergy'),
         getTotalEnergyByDate: createInvokeHandler('nutrition_stat:getTotalEnergyByDate'),
     },
 });
