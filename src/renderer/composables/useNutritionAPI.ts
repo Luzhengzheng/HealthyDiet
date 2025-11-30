@@ -14,6 +14,7 @@ interface NutritionAPI {
     markCompleted: () => Promise<Result<void>>;
     getColoriesGoal: () => Promise<Result<void>>;
     setColoriesGoal: () => Promise<Result<void>>;
+    getTotalEnergy: () => Promise<Result<void>>;
     getTotalEnergyByDate: () => Promise<Result<void>>;
 }
 
