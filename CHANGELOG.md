@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.5.0...v0.5.2) (2025-12-08)
+
+
+### Features
+
+* enhance AppConfig interface and implement config management methods ([9b55fbc](https://github.com/Luzhengzheng/HealthyDiet/commit/9b55fbc730f3461c583365d96c179940b35ba5f3))
+* 完善数据库表结构和IPC通道类型定义 ([efa4c2e](https://github.com/Luzhengzheng/HealthyDiet/commit/efa4c2ed05ad7d91ff2c059ff8d0624f5e75805e))
+
 ### [0.5.1](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.4.0...v0.5.1) (2025-11-30)
 
 
