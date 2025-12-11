@@ -5,7 +5,6 @@ interface LogContext {
 export class Logger {
     private isDev = process.env.NODE_ENV === 'development';
 
-    // TODO: 参考error()和debug() 实现 info() 和 warn() 方法
     info(message: string, context?: LogContext): void {
         console.info(`[INFO] ${message}`, context ? JSON.stringify(context) : '');
     }
