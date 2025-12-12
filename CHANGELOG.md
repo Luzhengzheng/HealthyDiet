@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.0...v0.6.2) (2025-12-12)
+
+
+### Features
+
+* **UI:** add header ([5291187](https://github.com/Luzhengzheng/HealthyDiet/commit/5291187450300a902beace37e9a4814ff35b45dc))
+
+
+### Bug Fixes
+
+* **UI:** improve layout; enhance styling ([8347b5b](https://github.com/Luzhengzheng/HealthyDiet/commit/8347b5b31b90296ef9ab72bf276519b7eaab14e4))
+
 ### 0.6.1 (2025-12-12)
 
 
