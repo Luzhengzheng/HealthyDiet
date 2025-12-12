@@ -12,24 +12,23 @@
         </header>
 
         <main class="home-main-container">
-
-          <!--日期选择器-->
-        <section class="date-section glass-card animate-in" style="animation-delay: 0.1s">
-          <div class="section-header">
-            <h3 class="section-title">
-              <ClockCircleOutlined class="section-icon" />
-              选择日期
-            </h3>
-             <a-date-picker 
-              v-model:value="selectedDate" 
-              value-format="YYYY-MM-DD" 
-              @change="handleDateChange"  
-              :allowClear="false"
-              size="large"
-              class="date-picker"
-            />
-          </div>
-        </section>
+            <!--日期选择器-->
+            <section class="date-section glass-card animate-in" style="animation-delay: 0.1s">
+                <div class="section-header">
+                    <h3 class="section-title">
+                        <ClockCircleOutlined class="section-icon" />
+                        选择日期
+                    </h3>
+                    <a-date-picker
+                        v-model:value="selectedDate"
+                        value-format="YYYY-MM-DD"
+                        @change="handleDateChange"
+                        :allowClear="false"
+                        size="large"
+                        class="date-picker"
+                    />
+                </div>
+            </section>
 
             <div class="home-content glass-card">
                 <h1 class="gradient-text"><span class="icon-no-gradient">🥗</span>HealthyDiet</h1>
@@ -70,7 +69,7 @@ import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons-vue';
 dayjs.locale('zh-cn');
 const selectedDate = ref(dayjs().format('YYYY-MM-DD'));
 
-const handleDateChange = () => { }; // TODO: 处理日期变化
+const handleDateChange = () => {}; // TODO: 处理日期变化
 </script>
 
 <style scoped>
@@ -94,7 +93,7 @@ const handleDateChange = () => { }; // TODO: 处理日期变化
 }
 
 .date-picker {
-  min-width: 200px;
+    min-width: 200px;
 }
 
 .date-section,
@@ -192,8 +191,31 @@ h1 {
     margin-top: 16px;
 }
 
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+}
+
+.section-icon {
+    font-size: 24px;
+    color: #667eea;
+}
 .stats-section {
-  width: 100%;
+    width: 100%;
 }
 
 /* 响应式布局 */
