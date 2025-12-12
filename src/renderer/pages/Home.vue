@@ -12,6 +12,25 @@
         </header>
 
         <main class="home-main-container">
+
+          <!--日期选择器-->
+        <section class="date-section glass-card animate-in" style="animation-delay: 0.1s">
+          <div class="section-header">
+            <h3 class="section-title">
+              <ClockCircleOutlined class="section-icon" />
+              选择日期
+            </h3>
+             <a-date-picker 
+              v-model:value="selectedDate" 
+              value-format="YYYY-MM-DD" 
+              @change="handleDateChange"  
+              :allowClear="false"
+              size="large"
+              class="date-picker"
+            />
+          </div>
+        </section>
+
             <div class="home-content glass-card">
                 <h1 class="gradient-text"><span class="icon-no-gradient">🥗</span>HealthyDiet</h1>
                 <p class="subtitle">健康饮食，从记录开始</p>
@@ -43,9 +62,15 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import dayjs from 'dayjs';
-import { CalendarOutlined } from '@ant-design/icons-vue';
-import { Button as AButton } from 'ant-design-vue';
+import 'dayjs/locale/zh-cn';
+import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons-vue';
+
+dayjs.locale('zh-cn');
+const selectedDate = ref(dayjs().format('YYYY-MM-DD'));
+
+const handleDateChange = () => { }; // TODO: 处理日期变化
 </script>
 
 <style scoped>
@@ -68,6 +93,15 @@ import { Button as AButton } from 'ant-design-vue';
     color: #667eea;
 }
 
+.date-picker {
+  min-width: 200px;
+}
+
+.date-section,
+.form-section,
+.list-section {
+    width: 100%;
+}
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -95,7 +129,7 @@ import { Button as AButton } from 'ant-design-vue';
 .home-content {
     width: 100%;
     max-width: 1400px;
-    margin: 10 auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -156,6 +190,10 @@ h1 {
 
 .quick-actions {
     margin-top: 16px;
+}
+
+.stats-section {
+  width: 100%;
 }
 
 /* 响应式布局 */
