@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.3](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.2...v0.6.3) (2025-12-12)
+
+
+### Features
+
+* **UI:** add date picker ([b8cbb22](https://github.com/Luzhengzheng/HealthyDiet/commit/b8cbb222cd8c2050df2a9458529e76d703fe1a55))
+
 ### [0.6.2](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.0...v0.6.2) (2025-12-12)
 
 
