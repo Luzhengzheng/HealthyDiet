@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.3...v0.6.4) (2025-12-12)
+
+
+### Bug Fixes
+
+* implement the missing CSS classes ([180e14e](https://github.com/Luzhengzheng/HealthyDiet/commit/180e14e5344c09520b6331ad0dcca8b75b4005c5))
+
 ### [0.6.3](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.2...v0.6.3) (2025-12-12)
 
 
