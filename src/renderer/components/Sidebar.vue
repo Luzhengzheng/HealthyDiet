@@ -112,77 +112,84 @@ const handleItemClick = (item: SidebarItem) => {
 
 <style scoped>
 .sidebar {
-    width: 48px;
-    height: 100vh;
-    background: rgba(30, 30, 46, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
+width: 64px;
+height: 100vh;
+background: rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(24px) saturate(180%);
+-webkit-backdrop-filter: blur(24px) saturate(180%);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+border-right: 1px solid rgba(255, 255, 255, 0.6);
+position: fixed;
+left: 0;
+top: 0;
+z-index: 1000;
+box-shadow: 0 8px 32px 0 rgba(255, 154, 158, 0.08);
 }
 
 .sidebar-icons {
-    display: flex;
-    flex-direction: column;
-    padding-top: 8px;
+display: flex;
+flex-direction: column;
+padding-top: 16px;
+gap: 8px;
 }
 
 .sidebar-bottom {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 8px;
+display: flex;
+flex-direction: column;
+padding-bottom: 16px;
+gap: 8px;
 }
 
 .sidebar-icon-wrapper {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.2s ease;
-    color: rgba(255, 255, 255, 0.5);
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+position: relative;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+color: rgba(93, 93, 93, 0.6);
+margin: 0 auto;
+border-radius: 16px;
 }
 
 .sidebar-icon-wrapper:hover {
-    color: rgba(255, 255, 255, 0.85);
-    background: rgba(255, 255, 255, 0.05);
+color: rgba(255, 154, 158, 0.9);
+background: rgba(255, 154, 158, 0.1);
+transform: translateY(-2px);
 }
 
 .sidebar-icon-wrapper.active {
-    color: #fff;
+color: #ff9a9e;
+background: rgba(255, 154, 158, 0.15);
 }
 
-/* 左侧激活指示条 */
-.sidebar-icon-wrapper.active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2px;
-    height: 24px;
-    background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 100%);
-    border-radius: 0 2px 2px 0;
+/* 激活指示条 - 圆形指示器 */
+.sidebar-icon-wrapper.active::after {
+content: '';
+position: absolute;
+bottom: -8px;
+left: 50%;
+transform: translateX(-50%);
+width: 6px;
+height: 6px;
+background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+border-radius: 50%;
 }
 
 .sidebar-icon {
-    font-size: 22px;
-    transition: transform 0.2s ease;
+font-size: 22px;
+transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar-icon-wrapper:hover .sidebar-icon {
-    transform: scale(1.1);
+transform: scale(1.15);
 }
 
 .sidebar-icon-wrapper:active .sidebar-icon {
-    transform: scale(0.95);
+transform: scale(0.9);
 }
 </style>
