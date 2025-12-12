@@ -130,6 +130,12 @@ body::before {
     background-clip: text;
 }
 
+.icon-no-gradient {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important
+}
+
 a {
     font-weight: 500;
     color: #ff9a9e;

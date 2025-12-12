@@ -1,9 +1,20 @@
 <template>
     <div class="home">
+        <header class="app-header glass-card">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="date-display">
+                        <CalendarOutlined class="date-icon" />
+                        <span>{{ dayjs().format('YYYY 年 MM 月 DD 日') }}</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
         <div class="home-content glass-card">
-            <h1 class="gradient-text">🥗 HealthyDiet</h1>
+            <h1 class="gradient-text"><span class="icon-no-gradient">🥗</span>HealthyDiet</h1>
             <p class="subtitle">健康饮食，从记录开始</p>
-            
+
             <div class="feature-cards">
                 <div class="feature-card glass-card">
                     <div class="feature-icon">📝</div>
@@ -23,19 +34,52 @@
             </div>
 
             <div class="quick-actions">
-                <a-button type="primary" size="large">
-                    开始记录今日饮食
-                </a-button>
+                <a-button type="primary" size="large"> 开始记录今日饮食 </a-button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import dayjs from 'dayjs';
+import { CalendarOutlined } from '@ant-design/icons-vue';
 import { Button as AButton } from 'ant-design-vue';
 </script>
 
 <style scoped>
+.app-header {
+    margin: 20px;
+    margin-bottom: 32px;
+    padding: 20px 32px;
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.date-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #667eea;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .home {
     display: flex;
     flex-direction: column;
@@ -46,7 +90,6 @@ import { Button as AButton } from 'ant-design-vue';
 }
 
 .home-content {
-    max-width: 800px;
     width: 100%;
     padding: 48px;
     text-align: center;
@@ -107,11 +150,11 @@ h1 {
     .feature-cards {
         grid-template-columns: 1fr;
     }
-    
+
     h1 {
         font-size: 36px;
     }
-    
+
     .home-content {
         padding: 32px 24px;
     }
