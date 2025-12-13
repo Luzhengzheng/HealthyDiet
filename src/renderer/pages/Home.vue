@@ -8,6 +8,10 @@
                         <span>{{ dayjs().format('YYYY 年 MM 月 DD 日') }}</span>
                     </div>
                 </div>
+                <div class="header-title">
+                    <h1 class="gradient-text"><span class="icon-no-gradient">🥗</span>HealthyDiet</h1>
+                    <p class="subtitle">健康饮食，从记录开始</p>
+                </div>
             </div>
         </header>
 
@@ -31,9 +35,6 @@
             </section>
 
             <div class="home-content glass-card">
-                <h1 class="gradient-text"><span class="icon-no-gradient">🥗</span>HealthyDiet</h1>
-                <p class="subtitle">健康饮食，从记录开始</p>
-
                 <div class="feature-cards">
                     <div class="feature-card glass-card">
                         <div class="feature-icon">📝</div>
@@ -50,10 +51,21 @@
                         <h3>健康目标</h3>
                         <p>设定目标，追踪您的健康进度</p>
                     </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">⭐</div>
+                        <h3>营养建议</h3>
+                        <p>个性化的健康饮食建议</p>
+                    </div>
                 </div>
 
-                <div class="quick-actions">
-                    <a-button type="primary" size="large"> 开始记录今日饮食 </a-button>
+                <div class="stats-card glass-card">
+                    <h3>今日摄入统计</h3>
+                    <p>暂无今日饮食记录</p>
+                </div>
+
+                <div class="recommendation-card glass-card">
+                    <h3>健康提示</h3>
+                    <p>保持规律饮食，多喝水，适度运动</p>
                 </div>
             </div>
         </main>
@@ -80,6 +92,25 @@ const handleDateChange = () => {}; // TODO: 处理日期变化
     animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.header-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-title h1 {
+    font-size: 42px;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.header-title .subtitle {
+    font-size: 16px;
+    color: #888;
+    margin: 0;
+}
+
 .date-display {
     display: flex;
     align-items: center;
@@ -103,7 +134,7 @@ const handleDateChange = () => {}; // TODO: 处理日期变化
 }
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
@@ -113,6 +144,7 @@ const handleDateChange = () => {}; // TODO: 处理日期变化
     display: flex;
     align-items: center;
     gap: 20px;
+    width: 100%;
 }
 
 .home {
@@ -155,7 +187,7 @@ h1 {
 
 .feature-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-bottom: 48px;
 }
@@ -216,6 +248,45 @@ h1 {
 }
 .stats-section {
     width: 100%;
+}
+
+.stats-card {
+    width: 100%;
+    padding: 32px 24px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.stats-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.stats-card p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+.recommendation-card {
+    width: 100%;
+    padding: 32px 24px;
+    text-align: center;
+}
+
+.recommendation-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.recommendation-card p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
 }
 
 /* 响应式布局 */
