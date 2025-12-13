@@ -17,6 +17,7 @@ import { ref, computed, markRaw } from 'vue';
 import { Modal } from 'ant-design-vue';
 import Sidebar, { type SidebarItem } from '../components/Sidebar.vue';
 import Home from '../pages/Home.vue';
+import Settings from '../pages/Settings.vue';
 import { version } from '../../../package.json';
 
 // 当前选中的页面
@@ -25,11 +26,11 @@ const currentPage = ref('home');
 // 页面组件映射
 const pageComponents: Record<string, any> = {
     home: markRaw(Home),
+    settings: markRaw(Settings),
     // 可以在这里添加更多页面
     // record: markRaw(RecordPage),
     // list: markRaw(ListPage),
     // stats: markRaw(StatsPage),
-    // settings: markRaw(SettingsPage),
 };
 
 // 当前页面组件
@@ -91,7 +92,9 @@ const showAboutModal = () => {
 /* 页面切换过渡动画 */
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
 }
 
 .fade-enter-from {

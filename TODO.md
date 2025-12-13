@@ -18,6 +18,10 @@
 
 - [x] 参考`error()`和`debug()` 实现 `info()` 和 `warn()` 方法
 
+# 业务逻辑
+
+- [] 仿照EPerMonitor项目中AI分析的实现,针对该项目的业务逻辑,实现一个AI分析功能
+
 # 前端
 
 ## UI组件
@@ -26,6 +30,10 @@
 
 - [] 根据上下文添加一个AI助手功能项,找到正确的函数并完成添加
 
-# 业务逻辑
+### `renderer/components/AIAnalysis.vue`
 
-- [] 仿照EPerMonitor项目中AI分析的实现,针对该项目的业务逻辑,实现一个AI分析功能
+- [] 实现一个AI分析组件的UI,包括输入区域和显示结果区域
+
+### `renderer/pages/Setting.vue`
+
+- [] 在设置页面中添加一个启用自动备份的设置项UI,包括标签和开关组件(使用Ant-Design组件库)
