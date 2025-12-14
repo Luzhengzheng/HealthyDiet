@@ -58,9 +58,23 @@
                     </div>
                 </div>
 
-                <div class="stats-card glass-card">
-                    <h3>今日摄入统计</h3>
-                    <p>暂无今日饮食记录</p>
+                <div ref="weightChartContainer" class="weight-chart-lazy-container">
+                    <Suspense v-if="shouldLoadWeightChart">
+                        <template #default>
+                            <WeightChart />
+                        </template>
+                        <template #fallback>
+                            <div class="loading-card glass-card">
+                                <a-spin size="large" tip="加载中..." />
+                            </div>
+                        </template>
+                    </Suspense>
+                    <div v-else class="placeholder-card glass-card">
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon">📊</div>
+                            <p>滚动加载体重趋势图...</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="recommendation-card glass-card">
@@ -73,15 +87,41 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, defineAsyncComponent, onMounted } from 'vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons-vue';
 
+// 懒加载体重折线图组件
+const WeightChart = defineAsyncComponent(() => import('../components/WeightChart.vue'));
+
 dayjs.locale('zh-cn');
 const selectedDate = ref(dayjs().format('YYYY-MM-DD'));
+const shouldLoadWeightChart = ref(false);
+const weightChartContainer = ref<HTMLElement | null>(null);
 
 const handleDateChange = () => {}; // TODO: 处理日期变化
+
+onMounted(() => {
+    // 使用 Intersection Observer 实现懒加载
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !shouldLoadWeightChart.value) {
+                    shouldLoadWeightChart.value = true;
+                    observer.disconnect(); // 加载后停止观察
+                }
+            });
+        },
+        {
+            rootMargin: '50px', // 提前50px开始加载
+        },
+    );
+
+    if (weightChartContainer.value) {
+        observer.observe(weightChartContainer.value);
+    }
+});
 </script>
 
 <style scoped>
@@ -246,25 +286,45 @@ h1 {
     font-size: 24px;
     color: #667eea;
 }
+
 .stats-section {
     width: 100%;
 }
 
-.stats-card {
+.weight-chart-lazy-container {
     width: 100%;
-    padding: 32px 24px;
     margin-bottom: 24px;
+    min-height: 400px;
+}
+
+.loading-card {
+    width: 100%;
+    padding: 80px 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder-card {
+    width: 100%;
+    padding: 80px 24px;
     text-align: center;
 }
 
-.stats-card h3 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 12px;
-    margin-top: 0;
+.placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    opacity: 0.6;
 }
 
-.stats-card p {
+.placeholder-icon {
+    font-size: 48px;
+}
+
+.placeholder-content p {
     font-size: 14px;
     color: #888;
     margin: 0;
