@@ -68,14 +68,14 @@ const sidebarItems = computed<SidebarItem[]>(() => [
         type: 'page',
     },
     {
-        key: 'record',
-        label: '记录饮食',
+        key: 'plan',
+        label: '饮食计划',
         icon: FormOutlined,
         type: 'page',
     },
     {
-        key: 'list',
-        label: '记录列表',
+        key: 'recipe',
+        label: '食谱',
         icon: UnorderedListOutlined,
         type: 'page',
     },

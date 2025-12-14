@@ -32,8 +32,12 @@
 
 ### `renderer/components/AIAnalysis.vue`
 
-- [] 实现一个AI分析组件的UI,包括输入区域和显示结果区域
+- [] 仿照EPerMonitor项目中的AI分析组件,实现一个AI分析组件的UI
 
 ### `renderer/pages/Setting.vue`
 
 - [] 在设置页面中添加一个启用自动备份的设置项UI,包括标签和开关组件(使用Ant-Design组件库)
+
+### `renderer/layouts/MainLayout.vue`
+
+- [] 在`MainLayout.vue`中,将`饮食计划`和`统计分析`页面组件添加,注意同步还是异步加载的选择

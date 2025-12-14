@@ -13,20 +13,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, markRaw } from 'vue';
+import { ref, computed, markRaw, defineAsyncComponent } from 'vue';
 import { Modal } from 'ant-design-vue';
 import Sidebar, { type SidebarItem } from '../components/Sidebar.vue';
 import Home from '../pages/Home.vue';
 import Settings from '../pages/Settings.vue';
 import { version } from '../../../package.json';
 
+//主页面/父页面同步加载,子页面/组件按需异步加载
+const HomePage = markRaw(Home);
+const SettingsPage = markRaw(Settings);
+const RecipePage = markRaw(defineAsyncComponent(() => import('../components/Recipe.vue')));
+
 // 当前选中的页面
 const currentPage = ref('home');
 
 // 页面组件映射
 const pageComponents: Record<string, any> = {
-    home: markRaw(Home),
-    settings: markRaw(Settings),
+    home: HomePage,
+    settings: SettingsPage,
+    recipe: RecipePage,
     // 可以在这里添加更多页面
     // record: markRaw(RecordPage),
     // list: markRaw(ListPage),
