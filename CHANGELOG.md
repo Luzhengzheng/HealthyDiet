@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.8](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.7...v0.6.8) (2025-12-14)
+
+
+### Features
+
+* add weight trend chart component and implement lazy loading ([85e426d](https://github.com/Luzhengzheng/HealthyDiet/commit/85e426dadb02968cd794131829eaaae96d097903))
+
 ### [0.6.7](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.6...v0.6.7) (2025-12-14)
 
 ### [0.6.6](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.5...v0.6.6) (2025-12-13)
