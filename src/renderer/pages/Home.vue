@@ -36,25 +36,21 @@
 
             <div class="home-content glass-card">
                 <div class="feature-cards">
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">📝</div>
-                        <h3>记录饮食</h3>
-                        <p>轻松记录每日摄入的食物和营养</p>
+                    <div ref="calorieRingContainer" class="calorie-ring-lazy-container">
+                        <Suspense v-if="shouldLoadCalorieRing">
+                            <!-- TODO: 懒加载热量圆环组件-->
+                        </Suspense>
+                        <div v-else class="placeholder-card glass-card">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">📊</div>
+                                <p>加载中...</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="feature-card glass-card">
                         <div class="feature-icon">📊</div>
                         <h3>数据分析</h3>
                         <p>可视化分析您的营养摄入情况</p>
-                    </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>健康目标</h3>
-                        <p>设定目标，追踪您的健康进度</p>
-                    </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">⭐</div>
-                        <h3>营养建议</h3>
-                        <p>个性化的健康饮食建议</p>
                     </div>
                 </div>
 
@@ -94,11 +90,14 @@ import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons-vue';
 
 // 懒加载体重折线图组件
 const WeightChart = defineAsyncComponent(() => import('../components/WeightChart.vue'));
+// TODO:懒加载热量圆环组件
 
 dayjs.locale('zh-cn');
 const selectedDate = ref(dayjs().format('YYYY-MM-DD'));
 const shouldLoadWeightChart = ref(false);
 const weightChartContainer = ref<HTMLElement | null>(null);
+const shouldLoadCalorieRing = ref(false);
+const calorieRingContainer = ref<HTMLElement | null>(null);
 
 const handleDateChange = () => {}; // TODO: 处理日期变化
 
@@ -107,9 +106,14 @@ onMounted(() => {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && !shouldLoadWeightChart.value) {
-                    shouldLoadWeightChart.value = true;
-                    observer.disconnect(); // 加载后停止观察
+                if (entry.isIntersecting) {
+                    if (entry.target === weightChartContainer.value && !shouldLoadWeightChart.value) {
+                        shouldLoadWeightChart.value = true;
+                    }
+                    if (entry.target === calorieRingContainer.value && !shouldLoadCalorieRing.value) {
+                        shouldLoadCalorieRing.value = true;
+                    }
+                    observer.unobserve(entry.target);
                 }
             });
         },
@@ -120,6 +124,9 @@ onMounted(() => {
 
     if (weightChartContainer.value) {
         observer.observe(weightChartContainer.value);
+    }
+    if (calorieRingContainer.value) {
+        observer.observe(calorieRingContainer.value);
     }
 });
 </script>
@@ -299,7 +306,7 @@ h1 {
 
 .loading-card {
     width: 100%;
-    padding: 80px 24px;
+    padding: 60px 24px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -317,6 +324,13 @@ h1 {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    calorie-ring-lazy-container {
+        width: 100%;
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     opacity: 0.6;
 }
 

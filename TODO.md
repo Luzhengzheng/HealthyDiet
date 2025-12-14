@@ -18,13 +18,21 @@
 
 - [x] 参考`error()`和`debug()` 实现 `info()` 和 `warn()` 方法
 
-# 业务逻辑
-
-- [] 仿照EPerMonitor项目中AI分析的实现,针对该项目的业务逻辑,实现一个AI分析功能
-
 # 前端
 
 ## UI组件
+
+### `renderer/pages/Home.vue`
+
+- [] 仿照`Home.vue`中体重折线图组件`WeightChart`的实现 激活启用热量圆环组件(`CalorieRing.vue`)的懒加载UI
+
+### `renderer/pages/Setting.vue`
+
+- [] 在设置页面中添加一个启用自动备份的设置项UI,包括标签和开关组件(使用Ant-Design组件库)
+
+### `renderer/layouts/MainLayout.vue`
+
+- [] 在`MainLayout.vue`中,将`饮食计划`和`统计分析`页面组件添加,注意同步还是异步加载的选择
 
 ### `renderer/components/Sidebar.vue`
 
@@ -34,10 +42,6 @@
 
 - [] 仿照EPerMonitor项目中的AI分析组件,实现一个AI分析组件的UI
 
-### `renderer/pages/Setting.vue`
+# 业务逻辑
 
-- [] 在设置页面中添加一个启用自动备份的设置项UI,包括标签和开关组件(使用Ant-Design组件库)
-
-### `renderer/layouts/MainLayout.vue`
-
-- [] 在`MainLayout.vue`中,将`饮食计划`和`统计分析`页面组件添加,注意同步还是异步加载的选择
+- [] 仿照EPerMonitor项目中AI分析的实现,针对该项目的业务逻辑,实现一个AI分析功能
