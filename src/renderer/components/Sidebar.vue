@@ -39,6 +39,7 @@ import {
     UnorderedListOutlined,
     SettingOutlined,
     InfoCircleOutlined,
+    PlusCircleOutlined,
 } from '@ant-design/icons-vue';
 
 export interface SidebarItem {
@@ -66,6 +67,12 @@ const sidebarItems = computed<SidebarItem[]>(() => [
         label: '主页',
         icon: HomeOutlined,
         type: 'page',
+    },
+    {
+        key: 'record',
+        label: '添加记录',
+        icon: PlusCircleOutlined,
+        type: 'action',
     },
     {
         key: 'plan',

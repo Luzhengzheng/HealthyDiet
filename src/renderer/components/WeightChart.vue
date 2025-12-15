@@ -23,13 +23,36 @@
                 <span class="stat-value" :class="weightChangeClass">{{ weightChange }}</span>
             </div>
         </div>
+
+        <!-- 添加记录模态框 -->
+        <RecordModal
+            v-model:open="modalOpen"
+            title="添加体重记录"
+            label="体重"
+            :units="weightUnits"
+            :min="0"
+            :max="300"
+            :step="0.1"
+            :precision="1"
+            @confirm="handleAddRecord"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
+import { message } from 'ant-design-vue';
+import RecordModal, { type Unit } from './RecordModal.vue';
 
 const chartCanvas = ref<HTMLCanvasElement | null>(null);
+const modalOpen = ref(false);
+
+// 体重单位配置
+const weightUnits: Unit[] = [
+    { label: '公斤 (kg)', value: 'kg', factor: 1 },
+    { label: '斤', value: 'jin', factor: 0.5 }, // 1斤 = 0.5kg
+    { label: '磅 (lb)', value: 'lb', factor: 0.4536 }, // 1磅约0.4536kg
+];
 
 // 模拟数据
 const weightData = ref([
@@ -195,8 +218,34 @@ const drawChart = () => {
 };
 
 const addWeight = () => {
-    // TODO: 实现添加体重记录功能
-    console.log('添加体重记录');
+    modalOpen.value = true;
+};
+
+const handleAddRecord = (value: number, unit: string) => {
+    // 转换为公斤
+    const selectedUnit = weightUnits.find((u) => u.value === unit);
+    const weightInKg = Number((value * (selectedUnit?.factor || 1)).toFixed(1));
+
+    // 添加新记录（今天的日期）
+    const today = new Date();
+    const dateStr = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+    // 更新今天的记录或添加新记录
+    const lastRecord = weightData.value[weightData.value.length - 1];
+    if (lastRecord && lastRecord.date === dateStr) {
+        lastRecord.weight = weightInKg;
+    } else {
+        weightData.value.push({ date: dateStr, weight: weightInKg });
+        // 保持7天数据
+        if (weightData.value.length > 7) {
+            weightData.value.shift();
+        }
+    }
+
+    // 重绘图表
+    drawChart();
+
+    message.success(`成功添加体重记录: ${weightInKg} kg`);
 };
 
 onMounted(() => {

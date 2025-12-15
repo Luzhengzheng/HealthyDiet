@@ -23,14 +23,36 @@
                 <span class="stat-value" :class="completionClass">{{ completionRate }}</span>
             </div>
         </div>
+
+        <!-- 添加记录模态框 -->
+        <RecordModal
+            v-model:open="modalOpen"
+            title="添加饮水记录"
+            label="饮水量"
+            :units="waterUnits"
+            :min="0"
+            :max="5000"
+            :step="10"
+            :precision="0"
+            @confirm="handleAddRecord"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { message } from 'ant-design-vue';
+import RecordModal, { type Unit } from './RecordModal.vue';
 
 const chartCanvas = ref<HTMLCanvasElement | null>(null);
+const modalOpen = ref(false);
+
+// 饮水单位配置
+const waterUnits: Unit[] = [
+    { label: '毫升 (ml)', value: 'ml', factor: 1 },
+    { label: '茶匙', value: 'teaspoon', factor: 5 }, // 1茶匙约5ml
+    { label: '杯 (250ml)', value: 'cup', factor: 250 },
+];
 
 // 模拟数据 - 最近7天的饮水量
 const waterData = ref([
@@ -62,7 +84,23 @@ const completionClass = computed(() => {
 });
 
 const addWaterRecord = () => {
-    message.info('添加饮水记录功能开发中...');
+    modalOpen.value = true;
+};
+
+const handleAddRecord = (value: number, unit: string) => {
+    // 转换为毫升
+    const selectedUnit = waterUnits.find((u) => u.value === unit);
+    const amountInMl = Math.round(value * (selectedUnit?.factor || 1));
+
+    // 添加到今天的数据
+    if (waterData.value.length > 0) {
+        waterData.value[waterData.value.length - 1].amount += amountInMl;
+    }
+
+    // 重绘图表
+    drawChart();
+
+    message.success(`成功添加 ${amountInMl} ml 饮水记录`);
 };
 
 const drawChart = () => {

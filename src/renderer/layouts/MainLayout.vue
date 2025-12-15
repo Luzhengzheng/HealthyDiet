@@ -9,6 +9,15 @@
                 <component :is="currentPageComponent" :key="currentPage" />
             </Transition>
         </div>
+
+        <!-- 记录模态框 -->
+        <RecordModal
+            v-model:open="recordModalVisible"
+            :title="recordModalTitle"
+            :label="recordModalLabel"
+            :units="recordModalUnits"
+            @confirm="handleRecordConfirm"
+        />
     </div>
 </template>
 
@@ -18,6 +27,8 @@ import { Modal } from 'ant-design-vue';
 import Sidebar, { type SidebarItem } from '../components/Sidebar.vue';
 import Home from '../pages/Home.vue';
 import Settings from '../pages/Settings.vue';
+import RecordModal, { type Unit } from '../components/RecordModal.vue';
+import type { Dayjs } from 'dayjs';
 import { version } from '../../../package.json';
 
 //主页面/父页面同步加载,子页面/组件按需异步加载
@@ -38,6 +49,16 @@ const pageComponents: Record<string, any> = {
     // list: markRaw(ListPage),
     // stats: markRaw(StatsPage),
 };
+
+// 记录模态框状态
+const recordModalVisible = ref(false);
+const recordModalTitle = ref('记录体重');
+const recordModalLabel = ref('体重');
+const recordModalUnits = ref<Unit[]>([
+    { label: 'kg', value: 'kg' },
+    { label: '斤', value: 'jin' },
+    { label: '磅', value: 'lb' },
+]);
 
 // 当前页面组件
 const currentPageComponent = computed(() => {
@@ -63,11 +84,33 @@ const handleSidebarSelect = (item: SidebarItem) => {
         if (item.action) {
             item.action();
         }
+
+        if (item.key === 'record') {
+            // 打开记录模态框 (默认显示体重记录作为示例)
+            recordModalTitle.value = '记录体重';
+            recordModalLabel.value = '体重';
+            recordModalUnits.value = [
+                { label: 'kg', value: 'kg' },
+                { label: '斤', value: 'jin' },
+                { label: '磅', value: 'lb' },
+            ];
+            recordModalVisible.value = true;
+        }
+
         // 特殊处理某些功能按钮
         if (item.key === 'about') {
             showAboutModal();
         }
     }
+};
+
+const handleRecordConfirm = (value: number, unit: string, date: Dayjs) => {
+    console.log('Record confirmed:', value, unit, date.format());
+    Modal.success({
+        title: '记录成功',
+        content: `已记录: ${value} ${unit} 时间: ${date.format('YYYY-MM-DD HH:mm')}`,
+        centered: true,
+    });
 };
 
 // 显示关于弹窗
