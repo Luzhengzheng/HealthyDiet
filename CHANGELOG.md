@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.10](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.1...v0.6.10) (2025-12-15)
+
+
+### Features
+
+* add CalorieRing component ([c98a6ae](https://github.com/Luzhengzheng/HealthyDiet/commit/c98a6aebb372f5bb94224b515756dda12bc8d290))
+* add water-intake record component with lazy loading ([9f5c9ad](https://github.com/Luzhengzheng/HealthyDiet/commit/9f5c9ad57599869cc997db3920253f5725d95f3b))
+* add weight trend chart component and implement lazy loading ([85e426d](https://github.com/Luzhengzheng/HealthyDiet/commit/85e426dadb02968cd794131829eaaae96d097903))
+* **UI:** add date picker ([b8cbb22](https://github.com/Luzhengzheng/HealthyDiet/commit/b8cbb222cd8c2050df2a9458529e76d703fe1a55))
+* **UI:** add header ([5291187](https://github.com/Luzhengzheng/HealthyDiet/commit/5291187450300a902beace37e9a4814ff35b45dc))
+
+
+### Bug Fixes
+
+* implement the missing CSS classes ([180e14e](https://github.com/Luzhengzheng/HealthyDiet/commit/180e14e5344c09520b6331ad0dcca8b75b4005c5))
+* **UI:** improve layout; enhance styling ([8347b5b](https://github.com/Luzhengzheng/HealthyDiet/commit/8347b5b31b90296ef9ab72bf276519b7eaab14e4))
+
 ### [0.6.9](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.8...v0.6.9) (2025-12-14)
 
 
