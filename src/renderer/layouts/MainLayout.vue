@@ -85,18 +85,6 @@ const handleSidebarSelect = (item: SidebarItem) => {
             item.action();
         }
 
-        if (item.key === 'record') {
-            // 打开记录模态框 (默认显示体重记录作为示例)
-            recordModalTitle.value = '记录体重';
-            recordModalLabel.value = '体重';
-            recordModalUnits.value = [
-                { label: 'kg', value: 'kg' },
-                { label: '斤', value: 'jin' },
-                { label: '磅', value: 'lb' },
-            ];
-            recordModalVisible.value = true;
-        }
-
         // 特殊处理某些功能按钮
         if (item.key === 'about') {
             showAboutModal();

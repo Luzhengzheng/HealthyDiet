@@ -68,12 +68,7 @@ const sidebarItems = computed<SidebarItem[]>(() => [
         icon: HomeOutlined,
         type: 'page',
     },
-    {
-        key: 'record',
-        label: '添加记录',
-        icon: PlusCircleOutlined,
-        type: 'action',
-    },
+
     {
         key: 'plan',
         label: '饮食计划',
