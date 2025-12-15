@@ -47,10 +47,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>数据分析</h3>
-                        <p>可视化分析您的营养摄入情况</p>
+                    <div ref="waterIntakeContainer" class="water-intake-lazy-container">
+                        <Suspense v-if="shouldLoadWaterIntake">
+                            <template #default>
+                                <WaterIntake />
+                            </template>
+                            <template #fallback>
+                                <div class="loading-card glass-card">
+                                    <a-spin size="large" tip="加载中..." />
+                                </div>
+                            </template>
+                        </Suspense>
+                        <div v-else class="placeholder-card glass-card">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">💧</div>
+                                <p>加载饮水记录...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -90,6 +103,8 @@ import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons-vue';
 
 // 懒加载体重折线图组件
 const WeightChart = defineAsyncComponent(() => import('../components/WeightChart.vue'));
+// 懒加载饮水量柱状图组件
+const WaterIntake = defineAsyncComponent(() => import('../components/WaterIntake.vue'));
 // TODO:懒加载热量圆环组件
 
 dayjs.locale('zh-cn');
@@ -98,6 +113,8 @@ const shouldLoadWeightChart = ref(false);
 const weightChartContainer = ref<HTMLElement | null>(null);
 const shouldLoadCalorieRing = ref(false);
 const calorieRingContainer = ref<HTMLElement | null>(null);
+const shouldLoadWaterIntake = ref(false);
+const waterIntakeContainer = ref<HTMLElement | null>(null);
 
 const handleDateChange = () => {}; // TODO: 处理日期变化
 
@@ -113,6 +130,9 @@ onMounted(() => {
                     if (entry.target === calorieRingContainer.value && !shouldLoadCalorieRing.value) {
                         shouldLoadCalorieRing.value = true;
                     }
+                    if (entry.target === waterIntakeContainer.value && !shouldLoadWaterIntake.value) {
+                        shouldLoadWaterIntake.value = true;
+                    }
                     observer.unobserve(entry.target);
                 }
             });
@@ -127,6 +147,9 @@ onMounted(() => {
     }
     if (calorieRingContainer.value) {
         observer.observe(calorieRingContainer.value);
+    }
+    if (waterIntakeContainer.value) {
+        observer.observe(waterIntakeContainer.value);
     }
 });
 </script>
