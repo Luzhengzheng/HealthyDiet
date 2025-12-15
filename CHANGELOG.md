@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.12...v0.7.0) (2025-12-15)
+
+
+### Features
+
+* **UI:** redesign recipe page UI ([bb46ec5](https://github.com/Luzhengzheng/HealthyDiet/commit/bb46ec5b7ceabb0cd022c0c8657283ed4035887e))
+
 ### [0.6.12](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.9...v0.6.12) (2025-12-15)
 
 
