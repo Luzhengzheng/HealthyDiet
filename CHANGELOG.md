@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.12](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.9...v0.6.12) (2025-12-15)
+
+
+### Features
+
+* add water-intake record component with lazy loading ([9f5c9ad](https://github.com/Luzhengzheng/HealthyDiet/commit/9f5c9ad57599869cc997db3920253f5725d95f3b))
+* **UI:** add record modal window and integrate into components ([52fcfe4](https://github.com/Luzhengzheng/HealthyDiet/commit/52fcfe43ef0d69f1a7d64ce37941c2185b3be8ad))
+
+
+### Bug Fixes
+
+* remove redundant UI part ([f87a103](https://github.com/Luzhengzheng/HealthyDiet/commit/f87a10380e8518ff4157a2549ecfa30aae66342c))
+
 ### [0.6.11](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.10...v0.6.11) (2025-12-15)
 
 
