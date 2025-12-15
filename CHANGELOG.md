@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.11](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.10...v0.6.11) (2025-12-15)
+
+
+### Features
+
+* **UI:** add record modal window and integrate into components ([52fcfe4](https://github.com/Luzhengzheng/HealthyDiet/commit/52fcfe43ef0d69f1a7d64ce37941c2185b3be8ad))
+
 ### [0.6.10](https://github.com/Luzhengzheng/HealthyDiet/compare/v0.6.1...v0.6.10) (2025-12-15)
 
 
